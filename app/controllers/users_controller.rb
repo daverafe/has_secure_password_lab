@@ -4,12 +4,13 @@ class UsersController < ApplicationController
   end
 
   def create
+    # byebug
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id 
       redirect_to users_homepage_path
     else
-      redirect_to login_path
+      redirect_to new_user_path
     end
   end
 
